@@ -70,11 +70,11 @@ namespace IBE.Identidade.API.Controllers
             if (result.IsLockedOut)
             {
                 AdicionarErroProcessamento("Usuário temporariamente bloqueado por tentativas inválidas");
-                return BadRequest();
+                return CustomResponse();
             }
 
             AdicionarErroProcessamento("Usuário ou Senha incorretos");
-            return BadRequest();
+            return CustomResponse();
         }
 
         private async Task<UsuarioRespostaLogin> GerarJwt(string email)
