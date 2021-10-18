@@ -45,7 +45,7 @@ namespace IBE.WebApp.MVC.Controllers
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login(UsuarioLogin usuarioLogin)
-        {
+         {
             if (!ModelState.IsValid) return View(usuarioLogin);
 
             // API login

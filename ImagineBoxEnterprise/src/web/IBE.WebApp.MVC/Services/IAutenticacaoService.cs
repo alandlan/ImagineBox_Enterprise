@@ -5,9 +5,9 @@ namespace IBE.WebApp.MVC.Services
 {
     public interface IAutenticacaoService
     {
-        Task<string> Login(UsuarioLogin usuarioLogin);
+        Task<UsuarioRespostaLogin> Login(UsuarioLogin usuarioLogin);
 
-        Task<string> Registro(UsuarioRegistro usuarioRegistro);
+        Task<UsuarioRespostaLogin> Registro(UsuarioRegistro usuarioRegistro);
     }
 
     
