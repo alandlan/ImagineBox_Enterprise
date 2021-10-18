@@ -1,4 +1,5 @@
 ﻿using IBE.WebApp.MVC.Models;
+using IBE.WebApp.MVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -6,6 +7,13 @@ namespace IBE.WebApp.MVC.Controllers
 {
     public class IdentidadeController : Controller
     {
+        private readonly IAutenticacaoService _autenticacaoService;
+
+        public IdentidadeController(IAutenticacaoService autenticacaoService)
+        {
+            _autenticacaoService = autenticacaoService;
+        }
+
         [HttpGet]
         [Route("nava-conta")]
         public IActionResult Registro()
@@ -20,6 +28,7 @@ namespace IBE.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuarioRegistro);
 
             // API
+            var resposta = await _autenticacaoService.Registro(usuarioRegistro);
 
             if (false) return View(usuarioRegistro);
 
@@ -40,6 +49,7 @@ namespace IBE.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuarioLogin);
 
             // API login
+            var resposta = await _autenticacaoService.Login(usuarioLogin);
 
             if (false) return View(usuarioLogin);
 
