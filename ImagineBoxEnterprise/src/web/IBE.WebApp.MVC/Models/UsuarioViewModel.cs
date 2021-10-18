@@ -31,7 +31,7 @@ namespace IBE.WebApp.MVC.Models
 
     public class UsuarioRespostaLogin
     {
-        public string AccressToken { get; set; }
+        public string AccessToken { get; set; }
         public double ExpiresIn { get; set; }
         public UsuarioToken UsuarioToken { get; set; }
     }
