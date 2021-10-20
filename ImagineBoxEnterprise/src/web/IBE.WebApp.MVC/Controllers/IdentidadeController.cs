@@ -72,6 +72,7 @@ namespace IBE.WebApp.MVC.Controllers
         [Route("sair")]
         public async Task<IActionResult> Logout()
         {
+            await HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
@@ -95,7 +96,7 @@ namespace IBE.WebApp.MVC.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIndentity),
                 authProperties
-            );
+            ); 
         }
 
         private static JwtSecurityToken ObterTokenFormatado(string jwtToken)
