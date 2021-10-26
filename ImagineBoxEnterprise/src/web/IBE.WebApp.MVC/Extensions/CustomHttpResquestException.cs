@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace IBE.WebApp.MVC.Extensions
 {
-    public class CustomHttpResponseException : Exception
+    public class CustomHttpResquestException : Exception
     {
         public HttpStatusCode StatusCode;
 
-        public CustomHttpResponseException()
+        public CustomHttpResquestException()
         {
 
         }
 
-        public CustomHttpResponseException(string message, Exception innerException) 
+        public CustomHttpResquestException(string message, Exception innerException) 
             : base (message,innerException)
         {
 
         }
 
-        public CustomHttpResponseException(HttpStatusCode statusCode)
+        public CustomHttpResquestException(HttpStatusCode statusCode)
         {
             StatusCode = statusCode;
         }

@@ -1,4 +1,5 @@
-﻿using IBE.WebApp.MVC.Models;
+﻿using IBE.WebApp.MVC.Extensions;
+using IBE.WebApp.MVC.Models;
 using IBE.WebApp.MVC.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -20,7 +21,7 @@ namespace IBE.WebApp.MVC.Controllers
         }
 
         [HttpGet]
-        [Route("nava-conta")]
+        [Route("nova-conta")]
         public IActionResult Registro()
         {
             return View();

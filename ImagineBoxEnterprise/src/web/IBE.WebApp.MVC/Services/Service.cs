@@ -14,7 +14,7 @@ namespace IBE.WebApp.MVC.Services
                 case 403:
                 case 404:
                 case 500:
-                    throw new CustomHttpResponseException(response.StatusCode);
+                    throw new CustomHttpResquestException(response.StatusCode);
 
                 case 400:
                     return false;
