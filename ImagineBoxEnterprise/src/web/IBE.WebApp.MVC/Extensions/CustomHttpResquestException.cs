@@ -26,4 +26,23 @@ namespace IBE.WebApp.MVC.Extensions
             StatusCode = statusCode;
         }
     }
+
+    public class CustomPageNotFoundException : Exception
+    {
+        public HttpStatusCode StatusCode;
+        public CustomPageNotFoundException()
+        {
+
+        }
+
+        public CustomPageNotFoundException(string message, Exception innerException) : base (message,innerException)
+        {
+
+        }
+
+        public CustomPageNotFoundException(HttpStatusCode statusCode)
+        {
+            StatusCode = statusCode;
+        }
+    }
 }
