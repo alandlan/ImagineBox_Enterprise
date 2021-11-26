@@ -8,18 +8,29 @@ namespace IBE.WebApp.MVC
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+        public Startup(IWebHostEnvironment hostingEnvironment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostingEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
+
+            if (hostingEnvironment.EnvironmentName == "Development")
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityConfiguration();
 
-            services.AddMvcConfiguration();
+            //services.AddMvcConfiguration();
+            services.AddMvc();
 
             services.RegisterServices();
         }
