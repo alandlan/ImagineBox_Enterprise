@@ -1,4 +1,5 @@
-﻿using IBE.WebApp.MVC.Models;
+﻿using IBE.WebApp.MVC.Extensions;
+using IBE.WebApp.MVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,7 +14,7 @@ namespace IBE.WebApp.MVC.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
+        {            
             return View();
         }
 
@@ -23,7 +24,7 @@ namespace IBE.WebApp.MVC.Controllers
             return View();
         }
 
-        [Route("erro/id:length(3,3)")]
+        [Route("erro/{id:length(3,3)}")]
         public IActionResult Error(int id)
         {
             var modelErro = new ErrorViewModel();

@@ -29,8 +29,8 @@ namespace IBE.WebApp.MVC
         {
             services.AddIdentityConfiguration();
 
-            //services.AddMvcConfiguration();
-            services.AddMvc();
+            services.AddMvcConfiguration(Configuration);
+            //services.AddMvc();
 
             services.RegisterServices();
         }

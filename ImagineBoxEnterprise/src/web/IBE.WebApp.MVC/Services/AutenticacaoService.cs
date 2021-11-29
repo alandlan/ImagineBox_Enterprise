@@ -1,4 +1,6 @@
-﻿using IBE.WebApp.MVC.Models;
+﻿using IBE.WebApp.MVC.Extensions;
+using IBE.WebApp.MVC.Models;
+using Microsoft.Extensions.Options;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -6,17 +8,19 @@ namespace IBE.WebApp.MVC.Services
 {
     public class AutenticacaoService : Service, IAutenticacaoService
     {
-        private readonly  HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
+        private readonly AppSettings _settings;
 
-        public AutenticacaoService(HttpClient httpClient)
+        public AutenticacaoService(HttpClient httpClient, IOptions<AppSettings> settings)
         {
             _httpClient = httpClient;
+            _settings = settings.Value;
         }
         public async Task<UsuarioRespostaLogin> Login(UsuarioLogin usuarioLogin)
         {
             var loginContent = ObterConteudo(usuarioLogin);
 
-            var response = await _httpClient.PostAsync("https://localhost:44327/api/identidade/autenticar", loginContent);
+            var response = await _httpClient.PostAsync($"{_settings.AutenticacaoUrl}/api/identidade/autenticar", loginContent);
 
             if (!TratarErrosResponse(response))
             {
@@ -33,7 +37,7 @@ namespace IBE.WebApp.MVC.Services
         {
             var registroContent = ObterConteudo(usuarioRegistro);
 
-            var response = await _httpClient.PostAsync("https://localhost:44327/api/identidade/nova-conta", registroContent);
+            var response = await _httpClient.PostAsync($"{_settings.AutenticacaoUrl}/api/identidade/nova-conta", registroContent);
 
             
 

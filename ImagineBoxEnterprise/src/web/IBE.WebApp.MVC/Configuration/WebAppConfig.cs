@@ -32,7 +32,6 @@ namespace IBE.WebApp.MVC.Configuration
             app.UseStatusCodePagesWithRedirects("/erro/{0}");
             app.UseHsts();
 
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
