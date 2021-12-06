@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\buildingblocks\IBE.Core\IBE.Core.csproj" />
   </ItemGroup>
 
 
