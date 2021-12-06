@@ -1,4 +1,6 @@
 using IBE.Catalogo.API.Data;
+using IBE.Catalogo.API.Data.Repository;
+using IBE.Catalogo.API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,9 @@ namespace IBE.Catalogo.API
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<CatalogoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,16 +1,23 @@
 ﻿using IBE.Catalogo.API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using IBE.Core.Data;
+using System.Threading.Tasks;
 
 namespace IBE.Catalogo.API.Data
 {
-    public class CatalogoContext : DbContext
+    public class CatalogoContext : DbContext, IUnitOfWork
     {
         public CatalogoContext(DbContextOptions<CatalogoContext> options) : base(options)
         {
         }
 
         public DbSet<Produto> Produtos { get; set; }
+
+        public async Task<bool> Commit()
+        {
+            return await base.SaveChangesAsync() > 0;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
