@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\buildingblocks\IBE.Core\IBE.Core.csproj" />
+    <ProjectReference Include="..\..\buildingblocks\IBE.WebApi.Core\IBE.WebApi.Core.csproj" />
   </ItemGroup>
 
 

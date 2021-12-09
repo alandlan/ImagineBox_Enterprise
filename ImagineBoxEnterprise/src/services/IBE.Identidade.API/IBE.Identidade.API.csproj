@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
+    <ProjectReference Include="..\..\buildingblocks\IBE.WebApi.Core\IBE.WebApi.Core.csproj" />
   </ItemGroup>
 
 

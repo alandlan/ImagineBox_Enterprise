@@ -1,26 +1,18 @@
-﻿using IBE.Catalogo.API.Data;
-using IBE.WebApi.Core.Identidade;
+﻿using IBE.WebApi.Core.Identidade;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace IBE.Catalogo.API.Configuration
+namespace IBE.Identidade.API.Configuration
 {
     public static class ApiConfig
     {
-        public static void AddApiConfiguration(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
         {
-            services.AddDbContext<CatalogoContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Total",
-                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            });
+            return services;
         }
 
         public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -33,8 +25,6 @@ namespace IBE.Catalogo.API.Configuration
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseCors("Total");
 
             app.UseAuthConfiguration();
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IBE.Catalogo.API.Configuration
+namespace IBE.Identidade.API.Configuration
 {
     public static class SwaggerConfig
     {
@@ -14,12 +14,12 @@ namespace IBE.Catalogo.API.Configuration
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo()
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "ImagineBox Enterprise Catálogo API",
-                    Description = "Esta API consulta o catalogo de produtos da ImagineBox",
-                    Contact = new OpenApiContact() { Name = "Alan Martins", Email = "alan4lann@gmail.com" },
-                    License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
+                    Title = "Imagine Box Enterprise Identity API",
+                    Description = "Esta API faz autenticações do Sistema.",
+                    Contact = new OpenApiContact() { Name = "Alan Vieira Martins", Email = "alan4lann@gmail.com" },
+                    License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/license/MIT") }
                 });
             });
         }

@@ -1,5 +1,6 @@
 ﻿using IBE.Identidade.API.Extensions;
 using IBE.Identidade.API.Models;
+using IBE.WebApi.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
