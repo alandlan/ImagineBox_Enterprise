@@ -19,7 +19,7 @@ namespace IBE.Catalogo.API.Configuration
                    Title = "ImagineBox Enterprise Catálogo API",
                    Description = "Esta API consulta o catalogo de produtos da ImagineBox",
                    Contact = new OpenApiContact() { Name = "Alan Martins", Email = "alan4lann@gmail.com" },
-                   License = new OpenApiLicense() { Name = "MIT", Url = new Uri("www.google.com.br") }
+                   License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                });
            });
         }
