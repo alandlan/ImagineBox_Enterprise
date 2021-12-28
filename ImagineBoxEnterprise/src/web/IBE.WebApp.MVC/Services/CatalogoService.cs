@@ -14,7 +14,7 @@ namespace IBE.WebApp.MVC.Services
 
         public CatalogoService(HttpClient httpClient, IOptions<AppSettings> settings)
         {
-            httpClient.BaseAddress = new System.Uri(settings.Value.AutenticacaoUrl);
+            httpClient.BaseAddress = new System.Uri(settings.Value.CatalogoUrl);
 
             _httpClient = httpClient;
         }
