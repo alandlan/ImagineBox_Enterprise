@@ -18,15 +18,14 @@ namespace IBE.WebApp.MVC.Configuration
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
-            //services.AddHttpClient<ICatalogoService, CatalogoService>()
-            //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
-
-            services.AddHttpClient("Refit", options =>
-            {
-                options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
-            })
-                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
+            services.AddHttpClient<ICatalogoService, CatalogoService>()
+                .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+            //services.AddHttpClient("Refit", options =>
+            //{
+            //    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
+            //})
+            //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+            //    .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
