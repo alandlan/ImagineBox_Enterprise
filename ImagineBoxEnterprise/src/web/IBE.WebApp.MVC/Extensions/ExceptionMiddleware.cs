@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Refit;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -23,19 +24,27 @@ namespace IBE.WebApp.MVC.Extensions
             }
             catch (CustomHttpResquestException ex)
             {
-                HandleRequestExceptionAsync(httpContext, ex);
+                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
+            }
+            catch (ValidationApiException ex)
+            {
+                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
+            }
+            catch (ApiException ex)
+            {
+                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
         }
 
-        private static void HandleRequestExceptionAsync(HttpContext context, CustomHttpResquestException httpResquestException)
+        private static void HandleRequestExceptionAsync(HttpContext context, HttpStatusCode statusCode)
         {
-            if(httpResquestException.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            if(statusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                 return;
             }
 
-            context.Response.StatusCode = (int)httpResquestException.StatusCode;
+            context.Response.StatusCode = (int)statusCode;
         }
     }
 }
