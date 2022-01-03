@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
+using Polly.Extensions.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,14 @@ namespace IBE.WebApp.MVC.Configuration
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+
             services.AddHttpClient<ICatalogoService, CatalogoService>()
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddTransientHttpErrorPolicy(
-                    p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600))
-                );
+                //.AddTransientHttpErrorPolicy(
+                //    p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600))
+                //);
+                .AddPolicyHandler(Extensions.Policy.Retry());
+
             //services.AddHttpClient("Refit", options =>
             //{
             //    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
