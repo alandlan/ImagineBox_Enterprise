@@ -10,7 +10,7 @@ namespace IBE.WebApp.MVC.Extensions
     {
         public static IAsyncPolicy<HttpResponseMessage> Retry()
         {
-            var a = HttpPolicyExtensions
+            var retry = HttpPolicyExtensions
                 .HandleTransientHttpError()
                 .WaitAndRetryAsync(new[]
                 {
@@ -24,7 +24,7 @@ namespace IBE.WebApp.MVC.Extensions
                     Console.ForegroundColor = ConsoleColor.White;
                 });
 
-            return a;
+            return retry;
         }
     }
 }
