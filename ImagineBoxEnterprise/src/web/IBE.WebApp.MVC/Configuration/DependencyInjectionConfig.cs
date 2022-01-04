@@ -26,7 +26,8 @@ namespace IBE.WebApp.MVC.Configuration
                 //.AddTransientHttpErrorPolicy(
                 //    p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600))
                 //);
-                .AddPolicyHandler(Extensions.Policy.Retry());
+                .AddPolicyHandler(Extensions.Policy.Retry())
+                .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 
             //services.AddHttpClient("Refit", options =>
             //{
