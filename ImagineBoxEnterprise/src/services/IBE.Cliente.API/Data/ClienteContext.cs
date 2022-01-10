@@ -14,7 +14,7 @@ namespace IBE.Cliente.API.Data
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Models.Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
         public async Task<bool> Commit()
