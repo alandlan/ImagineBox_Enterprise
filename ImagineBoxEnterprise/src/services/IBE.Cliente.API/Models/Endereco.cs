@@ -3,7 +3,7 @@ using System;
 
 namespace IBE.Cliente.API.Models
 {
-    public class Endereco : Entity
+    public class Endereco : Entity, IAggregateRoot
     {
         public string Logradouro { get; private set; }
         public string Numero { get; private set; }

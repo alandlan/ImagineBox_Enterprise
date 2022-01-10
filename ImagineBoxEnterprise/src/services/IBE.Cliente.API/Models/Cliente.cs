@@ -17,7 +17,7 @@ namespace IBE.Cliente.API.Models
         // EF Relation
         protected Cliente() { }
 
-        public Cliente(Guid id,string nome,string email,string cpf)
+        public Cliente(Guid id, string nome, string email, string cpf)
         {
             Id = id;
             Nome = nome;
@@ -26,7 +26,7 @@ namespace IBE.Cliente.API.Models
             Excluido = false;
         }
 
-        public void TrocarEmail (string email)
+        public void TrocarEmail(string email)
         {
             Email = new Email(email);
         }
