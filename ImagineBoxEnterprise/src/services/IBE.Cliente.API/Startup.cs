@@ -1,5 +1,6 @@
 using IBE.Cliente.API.Configuration;
 using IBE.WebApi.Core.Identidade;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,8 @@ namespace IBE.Cliente.API
             services.AddJwtConfiguration(Configuration);
 
             services.AddSwaggerConfiguration();
+
+            services.AddMediatR(typeof(Startup));
 
             services.RegisterServices();
         }
