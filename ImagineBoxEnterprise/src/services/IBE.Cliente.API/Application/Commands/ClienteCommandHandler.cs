@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using IBE.Cliente.API.Application.Events;
 using IBE.Cliente.API.Models;
 using IBE.Core.Messages;
 using MediatR;
@@ -33,6 +34,8 @@ namespace IBE.Cliente.API.Application.Commands
             }
 
             _clienteRepository.Adicionar(cliente);
+
+            cliente.AdicionarEvento(new ClienteRegistradoEvent(message.Id, message.Nome, message.Email, message.Cpf));
 
             return await PersistirDados(_clienteRepository.UnitOfWork);
         }

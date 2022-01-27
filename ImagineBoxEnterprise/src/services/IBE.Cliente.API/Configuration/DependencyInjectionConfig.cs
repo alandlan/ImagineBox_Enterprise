@@ -1,15 +1,12 @@
 ﻿using FluentValidation.Results;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using IBE.Cliente.API.Application.Commands;
+using IBE.Cliente.API.Application.Events;
 using IBE.Cliente.API.Data;
 using IBE.Cliente.API.Data.Repository;
 using IBE.Cliente.API.Models;
 using IBE.Core.Mediator;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IBE.Cliente.API.Configuration
 {
@@ -19,6 +16,8 @@ namespace IBE.Cliente.API.Configuration
         {
             services.AddScoped<IMediatorHandler, MediatorHandler>();
             services.AddScoped<IRequestHandler<RegistrarClienteCommand, ValidationResult>, ClienteCommandHandler>();
+
+            services.AddScoped<INotificationHandler<ClienteRegistradoEvent>, ClienteEventHandler>(); 
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ClienteContext>();
