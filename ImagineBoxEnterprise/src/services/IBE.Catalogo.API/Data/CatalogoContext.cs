@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using IBE.Core.Data;
 using System.Threading.Tasks;
+using FluentValidation.Results;
+using IBE.Core.Messages;
 
 namespace IBE.Catalogo.API.Data
 {
@@ -21,6 +23,9 @@ namespace IBE.Catalogo.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
+
             foreach (var property in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100");

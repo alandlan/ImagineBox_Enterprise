@@ -1,17 +1,16 @@
 ﻿using IBE.Catalogo.API.Models;
+using IBE.WebApi.Core.Controllers;
 using IBE.WebApi.Core.Identidade;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IBE.Catalogo.API.Controllers
 {
-    [ApiController]
     [Authorize]
-    public class CatalogoController : Controller
+    public class CatalogoController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;
 
